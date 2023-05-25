@@ -1,0 +1,92 @@
+.topbarContainer{
+    display: flex;
+    align-items: center;
+    background-color: rgba(19, 19, 210, 0.995);
+    position: sticky;
+    top:0;
+    height: 78px;
+    z-index: 999;
+}
+.topbarLeft{
+    flex:2.4;
+
+}
+.topbarLogo{
+    font-size: 34px;
+    font-weight: 400;
+    color: white;
+    margin-left: 1.6vw;
+    font-family: 'Titan One', cursive; 
+}
+.topbarCenter{
+    flex:5;
+    display:flex;
+    align-items: center;
+
+}
+.icon{
+   font-size: 28px !important;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    
+}
+.searchInput{
+    width:100%;
+    height: 44px;
+    border-radius: 24px;
+    padding-left:12px ;
+    font-size: 18px;
+    margin-right: 12px;
+}
+.searchInput:focus{
+    outline:none;
+}
+.topbarRight{
+    flex:4;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.topbarLinks{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: 4vw;
+}
+.topbarLink{
+    margin-right: 8px;
+    margin-left: 12px;
+    font-size: 20px;
+    color: #ebeaea;
+}
+.topbarIcons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 8px;
+}
+.topbarIconItem{
+    margin-right: 12px;
+    cursor: pointer;
+    color: white;
+    
+}
+.topbarIconItemCount{
+    width: 20px;
+    height: 15px;
+    padding: 0 4px;
+    top:-5px;
+    right: -5px;
+    position: relative;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 14px;
+}
+.topbarImg{
+    height: 52px;
+    width: 52px;
+    border-radius: 50%;
+    margin-right: 12px;
+    object-fit: cover;
+}
