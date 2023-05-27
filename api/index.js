@@ -1,8 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const helmet = require('helmet');
 const morgan=require('morgan');
+const multer=require('multer');
+const path=require('path');
+const mongoose=require('mongoose');
 
 const dbconnection=require('./dbconfig');
 
@@ -20,6 +22,28 @@ app.use(morgan('common'));
 
 dbconnection();
 
+const upload = multer()
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '/public/images')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        cb(null, file.fieldname + '-' + uniqueSuffix)
+    }
+})
+
+app.post('/api/upload', upload.single('file'), (req, res)=> {
+    try{
+        return res.status(200).json({message:"File uploded successfully"});
+
+    }catch(err){
+        console.log(err);
+    }
+   
+  })
+  
  app.use('/api/users',userRoute)
  app.use('/api/auth',authRoute)
  app.use('/api/posts',postRoute)
