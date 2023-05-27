@@ -4,7 +4,9 @@ const User=require('../models/userModel');
 
 //Update a user
 router.put('/:id',async(req,res)=>{
+
     if(req.body.userId===req.params.id || req.body.isAdmin){
+
         if(req.body.password){
             try{
                 const salt=await bcrypt.genSalt(10);
@@ -25,6 +27,15 @@ router.put('/:id',async(req,res)=>{
         res.status(403).send("You cannot change someone else's account");
     }
 })
+
+// "userId":"64660d2b030232cb14d3a3d8",
+// " bio":"Ola test here!",
+//  "city":"Testpur " ,
+// " from":"TESTIS",
+//  "relationship":"dual",
+//  "coverImg":"post/5.jpeg",
+//  "profileImg":"profile.jpg"
+
 //Delete a user
 router.delete('/:id',async(req,res)=>{
         try{
@@ -59,6 +70,7 @@ router.put('/:id/follow',async(req,res)=>{
         try{
             const user=await User.findById(req.params.id);//one who is being followed
             const currentUser=await User.findById(req.body.userId);//following the user
+            
             if(!user.followers.includes(req.body.userId)){
                 await user.updateOne({
                     $push:{followers:req.body.userId}
@@ -72,7 +84,7 @@ router.put('/:id/follow',async(req,res)=>{
                 res.status(403).send("You already follow this user");
             }
         }catch(err){
-            res.status(404).json(err);
+            res.status(500).json(err);
         }
     }else{
         res.status(403).send("You cannot follow yourself");

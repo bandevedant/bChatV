@@ -46,7 +46,16 @@ const UserSchema=mongoose.Schema({
     bio:{
         type:String,
         max:50
-    }
+    },
+    profileImg:{
+        type:String,
+        default:""
+    },
+    coverImg:{
+        type:String,
+        default:""
+    },
+    
 
 },{timestamps:true})
 
